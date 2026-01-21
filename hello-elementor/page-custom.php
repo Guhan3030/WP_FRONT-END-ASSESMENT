@@ -110,7 +110,8 @@ get_header();
     </div>
 
     <!-- VIEWPORT -->
-    <div id="vp" style="overflow:hidden;width:100%;">
+<div id="vp" style="overflow:hidden;margin:auto;">
+
 
       <!-- TRACK -->
       <div id="trk" style="display:flex;gap:24px;">
@@ -197,51 +198,69 @@ get_header();
     </div>
 
   </div>
-</section>
-<script>
+  
+  <style>
+/* MOBILE - 1 CARD */
+#vp {
+  width: 300px;
+}
+
+/* TABLET - 2 CARDS */
+@media (min-width: 768px) {
+  #vp {
+    width: 624px; /* 300 + 24 + 300 */
+  }
+}
+
+/* DESKTOP - 3 CARDS */
+@media (min-width: 1024px) {
+  #vp {
+    width: 948px; /* 300 + 24 x 2 + 300 x 2 */
+  }
+}
+</style>
+
+  
+  <script>
 var vp = document.getElementById('vp');
 var trk = document.getElementById('trk');
-var cardWidth = 324; // card + gap
-var pos = 0;
+var cardWidth = 324; // card width + gap
+var index = 0;
+var totalCards = trk.children.length / 2; // original cards only
 var isPaused = false;
 
-/* AUTO SCROLL */
-setInterval(function(){
-  if(!isPaused){
-    pos += 1;
-    vp.scrollLeft = pos;
+/* STEP AUTO SLIDE */
+setInterval(function () {
+  if (isPaused) return;
 
-    if(pos >= trk.scrollWidth / 2){
-      pos = 0;
-    }
+  index++;
+
+  if (index >= totalCards) {
+    index = 0;
   }
-}, 20);
 
-/* DESKTOP HOVER */
-vp.addEventListener('mouseenter', function(){
-  isPaused = true;
-});
-vp.addEventListener('mouseleave', function(){
-  isPaused = false;
-});
+  vp.scrollTo({
+    left: index * cardWidth,
+    behavior: 'smooth'
+  });
 
-/* MOBILE TOUCH */
-vp.addEventListener('touchstart', function(){
-  isPaused = true;
-}, { passive:true });
+}, 3000); // 👉 3 seconds ku oru card
 
-vp.addEventListener('touchend', function(){
-  isPaused = false;
-}, { passive:true });
+/* HOVER PAUSE */
+vp.addEventListener('mouseenter', () => isPaused = true);
+vp.addEventListener('mouseleave', () => isPaused = false);
 
-vp.addEventListener('touchcancel', function(){
-  isPaused = false;
-}, { passive:true });
+/* MOBILE TOUCH PAUSE */
+vp.addEventListener('touchstart', () => isPaused = true, { passive: true });
+vp.addEventListener('touchend', () => isPaused = false, { passive: true });
 
 /* DOT CLICK */
 function goTo(i){
-  pos = i * cardWidth;
-  vp.scrollTo({ left: pos, behavior: 'smooth' });
+  index = i;
+  vp.scrollTo({
+    left: index * cardWidth,
+    behavior: 'smooth'
+  });
 }
 </script>
 
