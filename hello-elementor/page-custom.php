@@ -31,7 +31,7 @@ get_header();
           onmouseover="this.style.transform='translateY(-6px)'; this.querySelector('.price-wrap').style.background='rgba(0,0,0,0.45)';"
           onmouseout="this.style.transform='none'; this.querySelector('.price-wrap').style.background='transparent';">
 
-          <!-- IMAGE --><!-- IMAGE -->
+          <!-- IMAGE -->
 <div style="position:relative;height:260px;overflow:hidden;">
   <img 
     src="<?php echo $p['img']; ?>" 
