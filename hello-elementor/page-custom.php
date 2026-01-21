@@ -17,7 +17,7 @@ get_header();
 
     <div class="row g-4">
 
-      <!-- CARD -->
+      <!-- PROPERTY CARD -->
       <?php
       $items = [
         ["img"=>"1600596542815-ffad4c1539a9","price"=>"£1,600 PCM","badge"=>"Let Agreed","badgeBg"=>"#e74c3c","title"=>"17 Carter Villas, Brockenhurst","spec"=>"2 Bedrooms | Other","date"=>"Available Now"],
@@ -109,7 +109,6 @@ get_header();
       </div>
     </div>
 
-    <!-- VIEWPORT -->
 <div id="vp" style="overflow:hidden;margin:auto;">
 
 
@@ -150,7 +149,6 @@ get_header();
           </div>
         </div>
 
-        <!-- DUPLICATE SAME 3 -->
         <div style="background:#1c1c1c;color:#eee;padding:26px;border-radius:12px;
                     width:300px;flex-shrink:0;">
           <div style="color:#f1c40f;">★★★★★</div>
@@ -208,14 +206,14 @@ get_header();
 /* TABLET - 2 CARDS */
 @media (min-width: 768px) {
   #vp {
-    width: 624px; /* 300 + 24 + 300 */
+    width: 624px; 
   }
 }
 
 /* DESKTOP - 3 CARDS */
 @media (min-width: 1024px) {
   #vp {
-    width: 948px; /* 300 + 24 x 2 + 300 x 2 */
+    width: 948px; 
   }
 }
 </style>
@@ -244,7 +242,7 @@ setInterval(function () {
     behavior: 'smooth'
   });
 
-}, 3000); // 👉 3 seconds ku oru card
+}, 3000);
 
 /* HOVER PAUSE */
 vp.addEventListener('mouseenter', () => isPaused = true);
