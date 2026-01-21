@@ -1,7 +1,5 @@
 <?php
-/*
-Template Name: Custom Bootstrap Page
-*/
+
 get_header();
 ?>
 
@@ -12,7 +10,7 @@ get_header();
   <div class="container">
 
     <h2 style="text-align:center;font-size:2.3rem;font-weight:500;color:#7b68c7;letter-spacing:2px;margin-bottom:50px;">
-      OUR FEATURED LISTING
+      <b>OUR FEATURED LISTING</b>
     </h2>
 
     <div class="row g-4">
@@ -20,9 +18,9 @@ get_header();
       <!-- PROPERTY CARD -->
       <?php
       $items = [
-        ["img"=>"1600596542815-ffad4c1539a9","price"=>"£1,600 PCM","badge"=>"Let Agreed","badgeBg"=>"#e74c3c","title"=>"17 Carter Villas, Brockenhurst","spec"=>"2 Bedrooms | Other","date"=>"Available Now"],
-        ["img"=>"1568605114967-8130f3a36994","price"=>"£1,400 PCM","badge"=>"To Let","badgeBg"=>"#f1c40f","title"=>"56 Dumpton Cross, Exeter","spec"=>"4 Bedrooms | House","date"=>"Available Nov 6"],
-        ["img"=>"1522708323590-d24dbb6b0267","price"=>"£290,000","badge"=>"For Sale","badgeBg"=>"#f39c12","title"=>"116 Kingsdale Ford, Sherborne","spec"=>"5 Bedrooms | House","date"=>"For Sale"],
+        ["img"=>"http://localhost/wordpress/wp-content/uploads/2026/01/image1.jpg","price"=>"£1,600 PCM","badge"=>"Let Agreed","badgeBg"=>"#e74c3c","title"=>"17 Carter Villas, Brockenhurst","spec"=>"2 Bedrooms | Other","date"=>"Available Now"],
+        ["img"=>"http://localhost/wordpress/wp-content/uploads/2026/01/image2.jpg","price"=>"£1,400 PCM","badge"=>"To Let","badgeBg"=>"#f1c40f","title"=>"56 Dumpton Cross, Exeter","spec"=>"4 Bedrooms | House","date"=>"Available Nov 6"],
+        ["img"=>"http://localhost/wordpress/wp-content/uploads/2026/01/image3.jpg","price"=>"£290,000","badge"=>"For Sale","badgeBg"=>"#f39c12","title"=>"116 Kingsdale Ford, Sherborne","spec"=>"5 Bedrooms | House","date"=>"For Sale"],
       ];
 
       foreach($items as $p): ?>
@@ -33,29 +31,33 @@ get_header();
           onmouseover="this.style.transform='translateY(-6px)'; this.querySelector('.price-wrap').style.background='rgba(0,0,0,0.45)';"
           onmouseout="this.style.transform='none'; this.querySelector('.price-wrap').style.background='transparent';">
 
-          <!-- IMAGE -->
-          <div style="position:relative;height:260px;">
-            <img src="https://images.unsplash.com/photo-<?php echo $p['img']; ?>?w=800"
-                 style="width:100%;height:100%;object-fit:cover;">
+          <!-- IMAGE --><!-- IMAGE -->
+<div style="position:relative;height:260px;overflow:hidden;">
+  <img 
+    src="<?php echo $p['img']; ?>" 
+    alt="<?php echo $p['title']; ?>"
+    style="width:100%;height:100%;object-fit:cover;display:block;"
+  >
 
-            <!-- PRICE + BADGE STRIP -->
-            <div class="price-wrap"
-              style="position:absolute;bottom:12px;left:12px;right:12px;
-                     display:flex;justify-content:space-between;align-items:center;
-                     padding:8px 10px;border-radius:6px;
-                     background:transparent;transition:.3s;">
+  <!-- PRICE + BADGE STRIP -->
+  <div class="price-wrap"
+    style="position:absolute;bottom:12px;left:12px;right:12px;
+           display:flex;justify-content:space-between;align-items:center;
+           padding:8px 10px;border-radius:6px;
+           background:rgba(0,0,0,0.45);transition:.3s;">
 
-              <div style="color:#fff;font-weight:600;font-size:.9rem;">
-                <?php echo $p['price']; ?>
-              </div>
+    <div style="color:#fff;font-weight:600;font-size:.9rem;">
+      <?php echo $p['price']; ?>
+    </div>
 
-              <div style="background:<?php echo $p['badgeBg']; ?>;
-                          color:#fff;padding:4px 12px;
-                          border-radius:14px;font-size:.75rem;font-weight:600;">
-                <?php echo $p['badge']; ?>
-              </div>
-            </div>
-          </div>
+    <div style="background:<?php echo $p['badgeBg']; ?>;
+                color:#fff;padding:4px 12px;
+                border-radius:14px;font-size:.75rem;font-weight:600;">
+      <?php echo $p['badge']; ?>
+    </div>
+  </div>
+</div>
+
 
           <!-- BODY -->
           <div style="padding:20px;">
